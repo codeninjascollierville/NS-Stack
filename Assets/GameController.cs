@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Newblock();
+        text.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -59,7 +60,7 @@ public class GameController : MonoBehaviour
                  currentCube.transform.localScale.z <= 0f)
              {
                 Done = true;
-                text.gameObject.SetActive(true);
+                
                 text.text = "Final Score: " + Level;
                 StartCoroutine(X());
                 return;
@@ -70,6 +71,7 @@ public class GameController : MonoBehaviour
         currentCube.name = Level + "";
         currentCube.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((Level / 100f) % 1f, 1f, 1f));
         Level++;
+        text.text = "Score:" + (Level-1);
         Camera.main.transform.position = currentCube.transform.position + new Vector3(100, 100, 100);
         Camera.main.transform.LookAt(currentCube.transform.position);
     }
