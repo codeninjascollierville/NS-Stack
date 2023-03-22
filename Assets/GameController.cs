@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,13 +32,14 @@ public class GameController : MonoBehaviour
        var time = Mathf.Abs(Time.realtimeSinceStartup % 2f - 1f);
        var pos1 = lastCube.transform.position + Vector3.up * 10f;
        var pos2 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward) * 120;
+       var pos3 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward) * -120;
        if(Level % 2 == 0)
        {
-        currentCube.transform.position = Vector3.Lerp(pos2, pos1, time);
+        currentCube.transform.position = Vector3.Lerp(pos2, pos3, time);
        }
        else
        {
-        currentCube.transform.position = Vector3.Lerp(pos1, pos2, time);
+        currentCube.transform.position = Vector3.Lerp(pos3, pos2, time);
        }
        if (Input.GetMouseButtonDown(0))
        {
